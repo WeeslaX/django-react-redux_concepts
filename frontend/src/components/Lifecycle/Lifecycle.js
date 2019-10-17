@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Typography, Box, Button, Grid } from "@material-ui/core";
 
 export class Lifecycle extends Component {
+  state = {
+    typoOne: true,
+    typoTwo: false
+  };
   componentWillMount = () => {
     //Executed before components added to DOM
     //Called in the server
@@ -16,13 +20,14 @@ export class Lifecycle extends Component {
     // After receiving props from parent
     console.log("ComponentWillReceiveProps");
   };
-  componentWillUpdate = () => {
-    // Invokes immediately before rendering new props/state received [Should Avoid]
-    console.log("ComponentWillUpdate");
-  };
+
+  //   componentWillUpdate = () => {
+  //     // Invokes immediately before rendering new props/state received [Should Avoid]
+  //     console.log("ComponentWillUpdate");
+  //   };
 
   componentDidUpdate = () => {
-    // After componentDidUpdate is invoked
+    // Used in response to a prop/state update
     console.log("componentDidUpdate");
   };
 
@@ -35,14 +40,19 @@ export class Lifecycle extends Component {
     //Default behavior: render every update
     // If returns false: componentWillUpdate, render(), componentDidUpdate will not invoke
     console.log("shouldComponentUpdate");
+    // Always update
+    return true;
   };
 
   render() {
     console.log("Render");
     const { flag, handleToggleFlag, handleUnmount } = this.props;
+    let flagContent = `Flag Property: ${flag}`;
     return (
       <div>
         <Typography>Lifecycle Component Loaded</Typography>
+        <Box m={2} />
+        <Typography>{flagContent}</Typography>
         <Box m={2} />
         <Grid container justify="flex-start" spacing={1}>
           <Grid item>
