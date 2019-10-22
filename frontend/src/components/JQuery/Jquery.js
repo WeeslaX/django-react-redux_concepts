@@ -1,45 +1,56 @@
 import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
-import { applyJqueryStyles } from "../../assets/Jquery/jqueryStyles";
+import {
+  Grid,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography
+} from "@material-ui/core";
+import {
+  applyJqueryStyles,
+  jqueryStyles
+} from "../../assets/Jquery/jqueryStyles";
 import $ from "jquery";
 
 export class Jquery extends Component {
   componentDidMount = () => {
-    applyJqueryStyles();
-
     //Jquery Commands
-    $("#text").append($("<div>").html("<p>JQuery Page Loaded</p>"));
+    $("#text").append($("<div>").html("<p>Purdue Model</p>"));
     $("#box").hide();
-    $("#openBoxButton").click(function() {
-      $("#box").slideToggle(300);
+
+    $("#openBoxButton").on("click", function() {
+      $("#left").toggleClass("wide reduced");
+      if ($("#left").attr("class") === "wide") {
+        $("#left").animate({ width: "+=20%" }, 0);
+      } else {
+        $("#left").animate({ width: "-=20%" }, 0);
+      }
+      $("#box").animate({ width: "toggle" }, 0);
     });
+    // Styles
+    applyJqueryStyles();
   };
   render() {
     return (
-      <Grid container spacing={5}>
-        <Grid item>
+      <div id="wrapper">
+        {/* Left Side */}
+        <div id="left" class="wide">
           <div id="text" />
           <button id="openBoxButton">Display Box</button>
-        </Grid>
-        <Grid item>
+        </div>
+
+        {/* Right Side */}
+        <div id="right">
           <div id="box">
-            <div>
-              <b>
-                <u>Title</u>
-              </b>
-            </div>
-            <div>
-              <p>Option 1</p>
-            </div>
-            <div>
-              <p>Option 2</p>
-            </div>
-            <div>
-              <p>Option 3</p>
-            </div>
+            <Card>
+              <CardHeader title="Purdue Model Info" subheader="Placeholder" />
+              <CardContent>
+                <Typography>Option 1</Typography>
+              </CardContent>
+            </Card>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     );
   }
 }

@@ -2,16 +2,27 @@
 
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+
+// UI
+import MenuButton from "./Menu/MenuButton";
+
+// Concepts
 import Lifecycle from "./Lifecycle/Lifecycle";
 import Placeholder from "./Lifecycle/Unmount";
 import Jquery from "./JQuery/Jquery";
+import D3 from "./D3/D3";
 
-import { Box } from "@material-ui/core";
+import { Box, Typography, Grid } from "@material-ui/core";
 
 export class App extends Component {
   state = {
     flag: true,
-    current: 2
+    current: 3
+  };
+
+  // For concepts
+  handlePageChange = selection => {
+    this.setState({ current: selection });
   };
 
   handleToggleFlag = () => {
@@ -27,9 +38,17 @@ export class App extends Component {
     const { flag, current } = this.state;
     return (
       <div>
-        <h1>
-          <u>Django-React Concepts</u>
-        </h1>
+        <Grid container justify="space-between">
+          <Grid item>
+            <Typography variant="h3" style={{ padding: 10 }}>
+              <u>Django-React Concepts</u>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <MenuButton handlePageChange={this.handlePageChange} />
+          </Grid>
+        </Grid>
+
         <Box m={2} />
         {current === 0 && (
           <Lifecycle
@@ -40,6 +59,12 @@ export class App extends Component {
         )}
         {current === 1 && <Placeholder handleRemount={this.handleRemount} />}
         {current === 2 && <Jquery />}
+        {current === 3 && (
+          <D3
+            width={window.innerWidth * 0.7}
+            height={window.innerHeight * 0.75}
+          />
+        )}
       </div>
     );
   }
