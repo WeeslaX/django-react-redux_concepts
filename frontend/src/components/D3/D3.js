@@ -39,7 +39,6 @@ export class D3 extends Component {
       .attr("fill", function(d) {
         return d.color;
       })
-      .attr("orient", "auto")
       .append("path")
       .attr("d", "M0,-5L10,0L0,5 Z");
 

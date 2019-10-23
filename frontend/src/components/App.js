@@ -11,13 +11,14 @@ import Lifecycle from "./Lifecycle/Lifecycle";
 import Placeholder from "./Lifecycle/Unmount";
 import Jquery from "./JQuery/Jquery";
 import D3 from "./D3/D3";
+import Async from "./Async/Async";
 
 import { Box, Typography, Grid } from "@material-ui/core";
 
 export class App extends Component {
   state = {
     flag: true,
-    current: 3
+    current: 4
   };
 
   // For concepts
@@ -65,6 +66,7 @@ export class App extends Component {
             height={window.innerHeight * 0.75}
           />
         )}
+        {current === 4 && <Async />}
       </div>
     );
   }

@@ -58,6 +58,13 @@ export class MenuButton extends Component {
           >
             D3
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(4);
+            }}
+          >
+            Async
+          </MenuItem>
         </Menu>
       </div>
     );
