@@ -20,7 +20,7 @@ export class Async extends Component {
     id: "pending",
     name: "pending",
     creation: "pending",
-    list: undefined
+    list: []
   };
   handleFetchClick = async () => {
     await axios.get("http://10.1.11.3:8000/api/placeholder").then(response => {
@@ -37,15 +37,16 @@ export class Async extends Component {
     let response = await axios.get("http://10.1.11.3:8000/api/placeholder");
     this.setState({ name: response.data[0].name });
   };
-  componentWillMount = () => {
-    this.setState({ list: ["test1", "test2", "test3"] });
-    console.log("WillM");
-    console.log(this.state.list);
+
+  handleListUpdate = async () => {
+    // Using concat to add items
+    await axios.get("http://10.1.11.3:8000/api/placeholder/").then(response => {
+      this.setState({ list: this.state.list.concat(response.data[0].name) });
+    });
   };
+
   componentDidMount = () => {
-    //this.setState({ list: ["test1", "test2", "test3"] });
-    console.log("DidM");
-    console.log(this.state.list);
+    this.handleListUpdate();
   };
 
   render() {
@@ -80,6 +81,8 @@ export class Async extends Component {
         <Typography variant="body1">Creation: {creation}</Typography>
         <Box m={1} />
         <Typography variant="body1">List:</Typography>
+
+        {/* Map function bug testing */}
         {list.map((item, key) => {
           return (
             <Typography variant="body1" key={key}>
