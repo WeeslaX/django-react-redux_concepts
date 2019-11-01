@@ -19,13 +19,15 @@ export class Async extends Component {
   state = {
     id: "pending",
     name: "pending",
-    creation: "pending"
+    creation: "pending",
+    list: undefined
   };
   handleFetchClick = async () => {
-    let response = await axios.get("http://10.1.11.3:8000/api/placeholder");
-    this.setState({ id: response.data[0].id });
-    this.setState({ name: response.data[0].name });
-    this.setState({ creation: response.data[0].createdAt });
+    await axios.get("http://10.1.11.3:8000/api/placeholder").then(response => {
+      this.setState({ id: response.data[0].id });
+      this.setState({ name: response.data[0].name });
+      this.setState({ creation: response.data[0].createdAt });
+    });
   };
 
   handleUpdateClick = async () => {
@@ -35,9 +37,19 @@ export class Async extends Component {
     let response = await axios.get("http://10.1.11.3:8000/api/placeholder");
     this.setState({ name: response.data[0].name });
   };
+  componentWillMount = () => {
+    this.setState({ list: ["test1", "test2", "test3"] });
+    console.log("WillM");
+    console.log(this.state.list);
+  };
+  componentDidMount = () => {
+    //this.setState({ list: ["test1", "test2", "test3"] });
+    console.log("DidM");
+    console.log(this.state.list);
+  };
 
   render() {
-    const { id, name, creation } = this.state;
+    const { id, name, creation, list } = this.state;
     return (
       <div>
         <Typography variant="h6">Async Await Loaded</Typography>
@@ -66,6 +78,15 @@ export class Async extends Component {
         <Typography variant="body1">ID: {id}</Typography>
         <Typography variant="body1">Name: {name}</Typography>
         <Typography variant="body1">Creation: {creation}</Typography>
+        <Box m={1} />
+        <Typography variant="body1">List:</Typography>
+        {list.map((item, key) => {
+          return (
+            <Typography variant="body1" key={key}>
+              {item}
+            </Typography>
+          );
+        })}
       </div>
     );
   }

@@ -1,66 +1,121 @@
 import React, { Component } from "react";
 
-import { Typography, Box, Paper } from "@material-ui/core";
+import {
+  Typography,
+  Box,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  CardHeader,
+  Paper
+} from "@material-ui/core";
 
 // D3 Libraries
 import * as d3 from "d3";
 import $ from "jquery";
 
+import {
+  applyJqueryStyles,
+  jqueryStyles
+} from "../../assets/Jquery/jqueryStyles";
+
+import { withStyles } from "@material-ui/styles";
+
 export class D3 extends Component {
   componentDidMount = () => {
-    const width = this.props.width;
-    const height = this.props.height;
-    var textVisible = false;
+    const width = window.innerWidth * 0.3;
+    const height = window.innerHeight * 0.5;
+
+    var border = 1;
+    var bordercolor = "black";
+
+    // Styles
+    applyJqueryStyles();
+
+    $("#box").hide();
     $("#myg").empty();
 
+    // Viewbox
     var svg = d3
-      .select(this.refs.anchor)
+      .select("#myg")
       .append("svg")
-      .attr("width", width)
-      .attr("height", height);
+      .attr("viewBox", "0 0 1000 420")
+      //.attr("preserveAspectRatio", "none")
+      .attr("height", "400px")
+      .attr("width", "100%");
 
-    svg
-      .append("defs")
-      .selectAll("marker")
-      .data([
-        { type: "link", color: "#333" },
-        { type: "selected", color: "#0ff" }
-      ])
-      .enter()
-      .append("marker")
-      .attr("id", function(d) {
-        return d.type;
-      })
-      .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 25)
-      .attr("refY", -2.5)
-      .attr("markerWidth", 6)
-      .attr("markerHeight", 6)
-      .attr("fill", function(d) {
-        return d.color;
-      })
-      .append("path")
-      .attr("d", "M0,-5L10,0L0,5 Z");
-
+    //Add a border
     svg
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
-      .attr("width", width)
-      .attr("height", height)
-      .attr("fill", "#e8f7ff");
+      .attr("width", 900)
+      .attr("height", 320)
+      .style("stroke", bordercolor)
+      .style("fill", "yellow")
+      .style("stroke-width", border);
+
+    // Add a line
+    svg
+      .append("line")
+      .attr("x1", 0)
+      .attr("y1", 0)
+      .attr("x2", 320)
+      .attr("y2", 320)
+      .style("stroke", "rgb(255,0,0)")
+      .style("stroke-width", 2);
+
+    //
+  };
+
+  handleButtonClick = () => {
+    $("#left").toggleClass("wide reduced");
+    if ($("#left").attr("class") === "wide") {
+      $("#left").animate({ width: "+=20%" }, 0);
+    } else {
+      $("#left").animate({ width: "-=20%" }, 0);
+    }
+    $("#box").animate({ width: "toggle" }, 0);
+    //d3.select("#myg").attr("viewBox", "0 0 900 420");
   };
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <Typography variant="h5">D3 Page Loaded</Typography>
+        <Grid container spacing={3} justify="flex-start">
+          <Grid item>
+            <Typography variant="h5">D3 Page Loaded</Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={this.handleButtonClick}
+            >
+              Open Box
+            </Button>
+          </Grid>
+        </Grid>
         <Box m={2} />
-        <Paper style={{ border: "solid", width: "80%" }}>
-          <div id="myg" ref="anchor" />
-        </Paper>
+        <div id="wrapper">
+          <div id="left" class="wide">
+            <div id="myg" ref="anchor" />
+          </div>
+          <div id="right">
+            <div id="box">
+              <Card>
+                <CardHeader title="Purdue Model Info" subheader="Placeholder" />
+                <CardContent>
+                  <Typography>Option 1</Typography>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default D3;
+export default withStyles(jqueryStyles)(D3);

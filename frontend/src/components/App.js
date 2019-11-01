@@ -18,6 +18,11 @@ import { Box, Typography, Grid } from "@material-ui/core";
 export class App extends Component {
   state = {
     flag: true,
+    // 0 - Lifecycle Page
+    // 1 - Placeholder Page
+    // 2 - JQuery
+    // 3 - D3
+    // 4 - Async Await
     current: 4
   };
 
@@ -60,12 +65,7 @@ export class App extends Component {
         )}
         {current === 1 && <Placeholder handleRemount={this.handleRemount} />}
         {current === 2 && <Jquery />}
-        {current === 3 && (
-          <D3
-            width={window.innerWidth * 0.7}
-            height={window.innerHeight * 0.75}
-          />
-        )}
+        {current === 3 && <D3 />}
         {current === 4 && <Async />}
       </div>
     );

@@ -1,6 +1,13 @@
 import $ from "jquery";
 
-export const jqueryStyles = theme => {};
+export const jqueryStyles = theme => ({
+  leftGrid: {
+    width: "90%"
+  },
+  rightGrid: {
+    width: "5%"
+  }
+});
 
 export function applyJqueryStyles() {
   $("#wrapper").css({
@@ -29,6 +36,6 @@ export function applyJqueryStyles() {
   });
   $("#right").css({
     float: "right",
-    width: "20%"
+    width: "25%"
   });
 }
