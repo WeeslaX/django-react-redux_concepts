@@ -8,4 +8,4 @@ from django.contrib.postgres.fields import JSONField
 class Placeholder(models.Model):
     name = models.CharField(max_length=100)
     createdAt = models.DateTimeField(default=datetime.now, blank=True)
-    data = JSONField()
+    data = JSONField(default=dict)

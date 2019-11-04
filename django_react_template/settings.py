@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ["10.1.11.3"]
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.postgres',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,8 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'manager',
-    'frontend',
-    'django.contrib.postgres'
+    'frontend'
 ]
 
 
