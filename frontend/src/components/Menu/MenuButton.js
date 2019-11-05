@@ -65,6 +65,13 @@ export class MenuButton extends Component {
           >
             Async
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(5);
+            }}
+          >
+            Jsonfield
+          </MenuItem>
         </Menu>
       </div>
     );
