@@ -10,6 +10,9 @@ export class Recharts extends Component {
           <u>Recharts Page Loaded</u>
         </Typography>
         <Box m={2} />
+        <Paper square="true" elevation="2">
+          <Typography>Placeholder</Typography>
+        </Paper>
       </div>
     );
   }
