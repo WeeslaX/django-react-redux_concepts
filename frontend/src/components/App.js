@@ -13,6 +13,7 @@ import Jquery from "./JQuery/Jquery";
 import D3 from "./D3/D3";
 import Async from "./Async/Async";
 import Jsonfield from "./Jsonfield/Jsonfield";
+import Recharts from "./Recharts/Recharts";
 
 import { Box, Typography, Grid } from "@material-ui/core";
 
@@ -25,7 +26,8 @@ export class App extends Component {
     // 3 - D3
     // 4 - Async Await
     // 5 - Jsonfield
-    current: 5
+    // 6 - Recharts
+    current: 6
   };
 
   // For concepts
@@ -70,6 +72,7 @@ export class App extends Component {
         {current === 3 && <D3 />}
         {current === 4 && <Async />}
         {current === 5 && <Jsonfield />}
+        {current === 6 && <Recharts />}
       </div>
     );
   }

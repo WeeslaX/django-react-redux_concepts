@@ -1,3 +1,6 @@
+# Redo migration: python manage.py migrate --fake (appname) zero
+#                 python manage.py migrate (appname)
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,7 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'manager',
-    'frontend'
+    'frontend',
+    'input'
 ]
 
 

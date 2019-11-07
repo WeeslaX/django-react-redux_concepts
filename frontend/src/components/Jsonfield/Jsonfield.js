@@ -53,6 +53,9 @@ export class Jsonfield extends Component {
   render() {
     return (
       <div>
+        <Typography variant="h6">
+          <u>Jsonfield Page Loaded</u>
+        </Typography>
         <Box m={3} />
         <Grid container spacing={2}>
           <Grid item>

@@ -50,7 +50,9 @@ export class Lifecycle extends Component {
     let flagContent = `Flag Property: ${flag}`;
     return (
       <div>
-        <Typography>Lifecycle Component Loaded</Typography>
+        <Typography variant="h6">
+          <u>Lifecycle Page Loaded</u>
+        </Typography>
         <Box m={2} />
         <Typography>{flagContent}</Typography>
         <Box m={2} />

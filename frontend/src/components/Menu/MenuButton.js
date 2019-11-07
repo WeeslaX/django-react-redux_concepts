@@ -72,6 +72,13 @@ export class MenuButton extends Component {
           >
             Jsonfield
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(6);
+            }}
+          >
+            Recharts
+          </MenuItem>
         </Menu>
       </div>
     );

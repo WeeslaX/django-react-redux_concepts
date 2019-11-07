@@ -85,7 +85,9 @@ export class D3 extends Component {
       <div>
         <Grid container spacing={3} justify="flex-start">
           <Grid item>
-            <Typography variant="h5">D3 Page Loaded</Typography>
+            <Typography variant="h6">
+              <u>D3 Page Loaded</u>
+            </Typography>
           </Grid>
           <Grid item>
             <Button
