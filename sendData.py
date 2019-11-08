@@ -21,7 +21,7 @@ def sendData():
         }
         r = requests.post(url, json=payload)
         print(r)
-        time.sleep(10)
+        time.sleep(2)
 
 
 if __name__ == "__main__":
