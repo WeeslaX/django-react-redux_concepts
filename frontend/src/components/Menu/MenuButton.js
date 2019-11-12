@@ -79,6 +79,20 @@ export class MenuButton extends Component {
           >
             Recharts
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(7);
+            }}
+          >
+            Tabs
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(8);
+            }}
+          >
+            Footer
+          </MenuItem>
         </Menu>
       </div>
     );

@@ -14,6 +14,8 @@ import D3 from "./D3/D3";
 import Async from "./Async/Async";
 import Jsonfield from "./Jsonfield/Jsonfield";
 import Recharts from "./Recharts/Recharts";
+import ScrollableTabs from "./Tabs/ScrollableTabs";
+import Footer from "./Footer/Footer";
 
 import { Box, Typography, Grid } from "@material-ui/core";
 
@@ -27,6 +29,8 @@ export class App extends Component {
     // 4 - Async Await
     // 5 - Jsonfield
     // 6 - Recharts
+    // 7 - Tabs
+    // 8 - Footer
     current: 6
   };
 
@@ -47,7 +51,7 @@ export class App extends Component {
   render() {
     const { flag, current } = this.state;
     return (
-      <div>
+      <Grid>
         <Grid container justify="space-between">
           <Grid item>
             <Typography variant="h3" style={{ padding: 10 }}>
@@ -73,7 +77,9 @@ export class App extends Component {
         {current === 4 && <Async />}
         {current === 5 && <Jsonfield />}
         {current === 6 && <Recharts />}
-      </div>
+        {current === 7 && <ScrollableTabs />}
+        {current === 8 && <Footer />}
+      </Grid>
     );
   }
 }
