@@ -93,6 +93,13 @@ export class MenuButton extends Component {
           >
             Footer
           </MenuItem>
+          <MenuItem
+            onClick={() => {
+              this.handleMenuSelectionClose(9);
+            }}
+          >
+            Environment
+          </MenuItem>
         </Menu>
       </div>
     );

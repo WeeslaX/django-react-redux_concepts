@@ -16,12 +16,14 @@ import Jsonfield from "./Jsonfield/Jsonfield";
 import Recharts from "./Recharts/Recharts";
 import ScrollableTabs from "./Tabs/ScrollableTabs";
 import Footer from "./Footer/Footer";
+import Environment from "./Widget/Environment";
 
 import { Box, Typography, Grid } from "@material-ui/core";
 
 export class App extends Component {
   state = {
     flag: true,
+    current: 7
     // 0 - Lifecycle Page
     // 1 - Placeholder Page
     // 2 - JQuery
@@ -31,7 +33,7 @@ export class App extends Component {
     // 6 - Recharts
     // 7 - Tabs
     // 8 - Footer
-    current: 6
+    // 9 - Environemnt
   };
 
   // For concepts
@@ -79,6 +81,7 @@ export class App extends Component {
         {current === 6 && <Recharts />}
         {current === 7 && <ScrollableTabs />}
         {current === 8 && <Footer />}
+        {current === 9 && <Environment />}
       </Grid>
     );
   }

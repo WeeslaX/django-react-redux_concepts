@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { AppBar, Tab, Tabs, Typography, Box } from "@material-ui/core";
 import { TabPanel } from "./TabPanel";
 
+import Recharts from "../Recharts/Recharts";
+import Environment from "../Widget/Environment";
+
 import { withStyles } from "@material-ui/styles";
 import { tabStyles } from "../../assets/Tabs/tabStyles";
 
@@ -18,7 +21,7 @@ export class ScrollableTabs extends Component {
     value: 0
   };
 
-  handleChange = (event, newValue) => {
+  handleTabChange = (event, newValue) => {
     this.setState({ value: newValue });
   };
 
@@ -35,7 +38,7 @@ export class ScrollableTabs extends Component {
           <AppBar position="static" color="default">
             <Tabs
               value={value}
-              onChange={this.handleChange}
+              onChange={this.handleTabChange}
               indicatorColor="primary"
               textColor="primary"
               variant="scrollable"
@@ -52,10 +55,10 @@ export class ScrollableTabs extends Component {
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0}>
-            Item One
+            <Recharts />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+            <Environment />
           </TabPanel>
           <TabPanel value={value} index={2}>
             Item Three
