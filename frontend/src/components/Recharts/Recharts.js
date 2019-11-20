@@ -10,8 +10,11 @@ import {
   Checkbox,
   FormGroup,
   FormControlLabel,
-  FormControl
+  FormControl,
+  IconButton
 } from "@material-ui/core";
+
+import { PauseCircleFilledOutlined } from "@material-ui/icons";
 
 import { rechartStyles } from "../../assets/Recharts/rechartStyles";
 import { withStyles } from "@material-ui/styles";
@@ -24,7 +27,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
+  Label
 } from "recharts";
 
 import { data0, data1, data2, ip, lineColours } from "./Data";
@@ -60,7 +64,7 @@ export class Recharts extends Component {
   };
   handleDataTwoClick = () => {
     clearInterval(this.interval);
-    this.setState({ data: data2 });
+    this.setState({ data: data0 });
   };
   handleStartQuery = () => {};
 
@@ -122,8 +126,10 @@ export class Recharts extends Component {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis type="number" domain={[0, 1000]} />
+                  <XAxis dataKey="name" tick={false}>
+                    <Label value="Time" offset={10} position="insideBottom" />
+                  </XAxis>
+                  <YAxis type="number" domain={[0, 100]} />
                   <Tooltip />
                   <Legend />
                   {selected.map((item, key) => {
@@ -131,7 +137,6 @@ export class Recharts extends Component {
                     return (
                       <Line
                         isAnimationActive={false}
-                        type="basis"
                         key={key}
                         type="monotone"
                         dataKey={item}

@@ -11,7 +11,7 @@ def sendData():
 
     # Send data every 10s
     while True:
-        now = datetime.datetime.strftime(datetime.datetime.now(), "%H:%M:%S")
+        now = datetime.datetime.strftime(datetime.datetime.now(), "%H%M%S")
         payload = {
             "data": {
                 "name": now,
@@ -19,8 +19,10 @@ def sendData():
                 "251.91.209.163": randint(0, 1000)
             }
         }
+        print(now)
         r = requests.post(url, json=payload)
-        print(r)
+        pastebin_url = r.text
+        print(pastebin_url)
         time.sleep(2)
 
 
